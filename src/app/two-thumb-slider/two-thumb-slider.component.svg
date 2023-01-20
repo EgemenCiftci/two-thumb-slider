@@ -1,0 +1,6 @@
+<svg #svgElement width="100%" height="30">
+  <rect class="slider-track" x="10" y="10" width="calc(100% - 10px)" height="10" rx="5" ry="5"/>
+  <rect class="slider-bar" [attr.x]="getBarX()" y="10" [attr.width]="getBarWidth()" height="10" (pointerdown)="barPointerDown($event)"/>
+  <circle class="slider-thumb" [attr.cx]="getThumb0X()" cy="15" r="10" (pointerdown)="thumb0PointerDown()"/>
+  <circle class="slider-thumb" [attr.cx]="getThumb1X()" cy="15" r="10" (pointerdown)="thumb1PointerDown()"/>
+</svg>

@@ -1,0 +1,15 @@
+<app-two-thumb-slider #slider></app-two-thumb-slider>
+
+<p>min: {{ slider.min }}</p>
+<p>max: {{ slider.max }}</p>
+<p>step: {{ slider.step }}</p>
+<p>value0: {{ slider.value0 }}</p>
+<p>value1: {{ slider.value1 }}</p>
+<button type="button" (click)="slider.value0StepDown()">
+  value0 Step Down
+</button>
+<button type="button" (click)="slider.value0StepUp()">value0 Step Up</button>
+<button type="button" (click)="slider.value1StepDown()">
+  value1 Step Down
+</button>
+<button type="button" (click)="slider.value1StepUp()">value1 Step Up</button>
