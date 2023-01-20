@@ -1,6 +1,7 @@
 <app-two-thumb-slider #slider></app-two-thumb-slider>
 
 <p>min: {{ slider.min }}</p>
+<input type="number" [(ngModel)]="slider.min">
 <p>max: {{ slider.max }}</p>
 <p>step: {{ slider.step }}</p>
 <p>value0: {{ slider.value0 }}</p>
