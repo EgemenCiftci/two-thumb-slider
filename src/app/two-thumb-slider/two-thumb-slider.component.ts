@@ -220,13 +220,13 @@ export class TwoThumbSliderComponent {
   }
 
   protected getThumb0X(): string {
-    return `calc(${this.value0} * calc(100% - 20px) / ${
+    return `calc(${this.value0 - this.min} * calc(100% - 20px) / ${
       this.max - this.min
     } + 10px)`;
   }
 
   protected getThumb1X(): string {
-    return `calc(${this.value1} * calc(100% - 20px) / ${
+    return `calc(${this.value1 - this.min} * calc(100% - 20px) / ${
       this.max - this.min
     } + 10px)`;
   }
