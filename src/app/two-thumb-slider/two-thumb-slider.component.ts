@@ -104,6 +104,8 @@ export class TwoThumbSliderComponent {
   private rect: any;
   private width: number;
   private offset: number;
+  private delta: number;
+  private downX: number;
 
   private getDefaultValue0(): number {
     return (
@@ -144,8 +146,14 @@ export class TwoThumbSliderComponent {
   @HostListener('document:pointermove', ['$event'])
   private onPointerMove(e: PointerEvent) {
     if (this.isBarDown) {
-      const x = e.clientX + this.offset;
-      // TO-DO: update value0 and value1
+      const deltaX = (100 * (e.clientX - this.downX)) / this.width;
+      const val0 = Math.max(this.min, this.value0 + deltaX) - this.value0;
+      const val1 = Math.min(this.max, this.value1 + deltaX) - this.value1;
+      const val =
+        Math.min(Math.abs(val0), Math.abs(val1)) * (deltaX < 0 ? -1 : 1);
+      this.value0 += val;
+      this.value1 += val;
+      this.downX = e.clientX;
     }
 
     if (this.isThumb0Down) {
@@ -170,6 +178,8 @@ export class TwoThumbSliderComponent {
     this.rect = this.svgElement.nativeElement.getBoundingClientRect();
     this.width = this.rect.width - 20;
     this.offset = -(this.rect.left + 10);
+    this.delta = this.value1 - this.value0;
+    this.downX = e.clientX;
     this.isBarDown = true;
   }
 
