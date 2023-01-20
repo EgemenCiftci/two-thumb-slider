@@ -73,7 +73,14 @@ export class TwoThumbSliderComponent {
     if (value > this.value1) {
       value = this.value1;
     }
-    this._value0Value = Math.round(value / this.step) * this.step;
+    value = Math.round(value / this.step) * this.step;
+    if (value < this.min) {
+      value = this.min;
+    }
+    if (value > this.max) {
+      value = this.max;
+    }
+    this._value0Value = value;
     this.change.emit({ value0: this.value0, value1: this.value1 });
   }
 
@@ -92,7 +99,14 @@ export class TwoThumbSliderComponent {
     if (value < this.value0) {
       value = this.value0;
     }
-    this._value1Value = Math.round(value / this.step) * this.step;
+    value = Math.round(value / this.step) * this.step;
+    if (value < this.min) {
+      value = this.min;
+    }
+    if (value > this.max) {
+      value = this.max;
+    }
+    this._value1Value = value;
     this.change.emit({ value0: this.value0, value1: this.value1 });
   }
 
@@ -110,9 +124,9 @@ export class TwoThumbSliderComponent {
   private getDefaultValue0(): number {
     return (
       Math.round(
-        this.max < this.min
+        (this.max < this.min
           ? this.min
-          : this.min + (this.max - this.min) / 3 / this.step
+          : this.min + (this.max - this.min) / 3) / this.step
       ) * this.step
     );
   }
@@ -120,9 +134,9 @@ export class TwoThumbSliderComponent {
   private getDefaultValue1(): number {
     return (
       Math.round(
-        this.max < this.min
+        (this.max < this.min
           ? this.max
-          : this.max - (this.max - this.min) / 3 / this.step
+          : this.max - (this.max - this.min) / 3) / this.step
       ) * this.step
     );
   }
