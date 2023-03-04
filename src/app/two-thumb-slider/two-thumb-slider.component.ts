@@ -160,7 +160,8 @@ export class TwoThumbSliderComponent {
   @HostListener('document:pointermove', ['$event'])
   private onPointerMove(e: PointerEvent) {
     if (this.isBarDown) {
-      const deltaX = (100 * (e.clientX - this.downX)) / this.width;
+      const scale = (this.max - this.min) / this.width;
+      const deltaX = scale * (e.clientX - this.downX);
       const val0 = Math.max(this.min, this.value0 + deltaX) - this.value0;
       const val1 = Math.min(this.max, this.value1 + deltaX) - this.value1;
       const val =
@@ -172,12 +173,14 @@ export class TwoThumbSliderComponent {
 
     if (this.isThumb0Down) {
       const x = e.clientX + this.offset;
-      this.value0 = (100 * x) / this.width;
+      const scale = (this.max - this.min) / this.width;
+      this.value0 = this.min + scale * x;
     }
 
     if (this.isThumb1Down) {
       const x = e.clientX + this.offset;
-      this.value1 = (100 * x) / this.width;
+      const scale = (this.max - this.min) / this.width;
+      this.value1 = this.min + scale * x;
     }
   }
 
