@@ -162,10 +162,13 @@ export class TwoThumbSliderComponent {
     if (this.isBarDown) {
       const scale = (this.max - this.min) / this.width;
       const deltaX = scale * (e.clientX - this.downX);
-      const val0 = Math.max(this.min, this.value0 + deltaX) - this.value0;
-      const val1 = Math.min(this.max, this.value1 + deltaX) - this.value1;
-      const val =
-        Math.min(Math.abs(val0), Math.abs(val1)) * (deltaX < 0 ? -1 : 1);
+      const val0 = Math.abs(
+        Math.max(this.min, this.value0 + deltaX) - this.value0
+      );
+      const val1 = Math.abs(
+        Math.min(this.max, this.value1 + deltaX) - this.value1
+      );
+      const val = Math.min(val0, val1) * (deltaX < 0 ? -1 : 1);
       this.value0 += val;
       this.value1 += val;
       this.downX = e.clientX;
