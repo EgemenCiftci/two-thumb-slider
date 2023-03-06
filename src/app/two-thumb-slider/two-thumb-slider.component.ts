@@ -118,7 +118,7 @@ export class TwoThumbSliderComponent {
   private rect: any;
   private width: number;
   private offset: number;
-  //private delta: number;
+  private deltaValue: number;
   private downX: number;
 
   private getDefaultValue0(): number {
@@ -198,7 +198,7 @@ export class TwoThumbSliderComponent {
     this.rect = this.svgElement.nativeElement.getBoundingClientRect();
     this.width = this.rect.width - 20;
     this.offset = -(this.rect.left + 10);
-    //this.delta = this.value1 - this.value0;
+    this.deltaValue = this.value1 - this.value0;
     this.downX = e.clientX;
     this.isBarDown = true;
   }
