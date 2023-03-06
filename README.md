@@ -1,12 +1,13 @@
 # Two Thumb Slider
 
-|**Name**|**Type**|**Description**|
-|min|number||
-|max|number||
-|step|number||
-|value0|number||
-|value1|number||
-|change|EventEmitter<{ value0: number; value1: number }>||
+| **Name** | **Type**                                         | **Description** |
+| -------- | ------------------------------------------------ | --------------- |
+| min      | number                                           |
+| max      | number                                           |
+| step     | number                                           |
+| value0   | number                                           |
+| value1   | number                                           |
+| change   | EventEmitter<{ value0: number; value1: number }> |
 
 **Methods:**
 value0StepDown()
